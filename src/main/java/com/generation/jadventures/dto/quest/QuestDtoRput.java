@@ -1,4 +1,4 @@
-package dto.quest;
+package com.generation.jadventures.dto.quest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package util;
+package com.generation.jadventures.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

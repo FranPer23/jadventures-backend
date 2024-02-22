@@ -1,4 +1,4 @@
-package dto.guild;
+package com.generation.jadventures.dto.quest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode(callSuper=false)
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class GuildDtoRput extends GuildDtoBase {
-private Integer id;
-private Integer quest_id;
-
+public class QuestDtoRpost extends QuestDtoBase{
+    private Integer guild_id;
 }

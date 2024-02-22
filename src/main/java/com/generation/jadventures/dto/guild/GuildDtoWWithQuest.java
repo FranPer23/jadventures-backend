@@ -1,4 +1,8 @@
-package dto.guild;
+package com.generation.jadventures.dto.guild;
+
+import java.util.List;
+
+import com.generation.jadventures.entities.Quest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +15,9 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class GuildDtoWNoQuest {
-private Integer id;
+public class GuildDtoWWithQuest extends GuildDtoBase{
+
+    private Integer id;
+    private List<Quest> postedQuests;
+
 }

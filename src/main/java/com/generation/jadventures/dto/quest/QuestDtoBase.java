@@ -1,6 +1,7 @@
-package dto.quest;
+package com.generation.jadventures.dto.quest;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,12 +14,12 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class QuestDtoBase {
   
-    private Date date_created;
+    private LocalDate date_created;
     private String status;
     private String rank;
     private int reward;
     private String area;
-    private Date date_completed;
+    private LocalDate date_completed;
     private String map_url;
     private String description;
     private String type;
