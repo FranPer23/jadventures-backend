@@ -12,7 +12,7 @@ import com.generation.jadventures.entities.Guild;
 public interface GuildRepository extends JpaRepository<Guild, Integer>
 
 {
-    @Query(value="SELECT * FROM guild WHERE name= :name AND authentication_seal= :seal")
+    @Query(value="SELECT * FROM guild WHERE name= :name AND authentication_seal= :seal", nativeQuery=true)
     Optional<Guild> login (@Param("name") String name, @Param ("seal") String seal);
 }
 
