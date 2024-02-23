@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.converter.QuestConverter;
 import com.generation.jadventures.dto.quest.QuestDtoRpost;
+import com.generation.jadventures.dto.quest.QuestDtoRput;
 import com.generation.jadventures.dto.quest.QuestDtoWWithGuild;
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.repositories.QuestRepository;
@@ -38,13 +40,12 @@ public class QuestController {
     }
    
     
-
-    // @PostMapping("/quests")
-    // public QuestDtoRpost insert(@RequestBody QuestDtoRpost dto) 
-    // {
-    //     Quest q = questConv.questDtoPost(dto);
-    //     return questConv.questDtoPost(questRepo.save(q));
-    // }
+    @PutMapping("/quests/{id}")
+    public QuestDtoWWithGuild edit(@RequestBody QuestDtoRput dto) 
+    {
+        Quest q = questConv.questDtoPut(dto);
+        return questConv.questToDtoWWithGuild(questRepo.save(q));
+    }
 
     @DeleteMapping("/quests/{id}")
     public void  deleteQuest(@PathVariable Integer id) 

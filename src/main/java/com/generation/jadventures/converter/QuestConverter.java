@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.generation.jadventures.dto.quest.QuestDtoBase;
 import com.generation.jadventures.dto.quest.QuestDtoR;
 import com.generation.jadventures.dto.quest.QuestDtoRpost;
+import com.generation.jadventures.dto.quest.QuestDtoRput;
 import com.generation.jadventures.dto.quest.QuestDtoWWithGuild;
 import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.entities.Quest;
@@ -85,6 +86,23 @@ public QuestDtoWWithGuild questToDtoWWithGuild(Quest e){
 }
 
 public Quest questDtoPost(QuestDtoRpost dto){
+    Guild gilda = guildRepo.findById(dto.getGuild_id()).get();
+    return Quest
+    .builder()
+    .date_created(dto.getDate_created())
+    .status(dto.getStatus())
+    .rank(dto.getRank())
+    .reward(dto.getReward())
+    .area(dto.getArea())
+    .date_completed(dto.getDate_completed())
+    .map_url(dto.getMap_url())
+    .description(dto.getDescription())
+    .type(dto.getType())
+    .patron(gilda)
+    .build();
+}
+
+public Quest questDtoPut(QuestDtoRput dto){
     Guild gilda = guildRepo.findById(dto.getGuild_id()).get();
     return Quest
     .builder()

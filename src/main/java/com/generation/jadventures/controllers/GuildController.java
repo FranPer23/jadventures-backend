@@ -1,16 +1,22 @@
 package com.generation.jadventures.controllers;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.converter.GuildConverter;
+import com.generation.jadventures.dto.guild.GuildDtoAuthentication;
 import com.generation.jadventures.dto.guild.GuildDtoBase;
 import com.generation.jadventures.dto.guild.GuildDtoWWithQuest;
+import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.repositories.GuildRepository;
 
 
@@ -31,9 +37,27 @@ public class GuildController {
                .toList();
     }
 
+    
+    // @PostMapping("/guild/login")
+    // public GuildDtoWWithQuest login(@RequestBody GuildDtoAuthentication dto ){
+    //     Optional<Guild> optGuild = guildRepo.login(dto.getName(), dto.getAuthentication_seal());
+    //     if (optGuild.isPresent()) {
+    //         GuildDtoWWithQuest guildDtoWWithQuest = // Logic to convert Guild to GuildDtoWWithQuest
+    //         return ResponseEntity.ok(guildDtoWWithQuest);
+    //     } else {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    // }
+
+
     @GetMapping("/guilds/{id}/quests")
     public GuildDtoWWithQuest getGuildDtoWWithQuest(@PathVariable Integer id) {
         return guildConv.GuildToDtoWWithQuest(guildRepo.findById(id).get());
+    }
+
+    @GetMapping("/guilds/{id}")
+    public GuildDtoBase getGuildDtoBase(@PathVariable Integer id) {
+        return guildConv.GuildToDtoBase(guildRepo.findById(id).get());
     }
 
   
