@@ -14,5 +14,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class QuestDtoRput extends QuestDtoBase {
     private Integer id;
-    private Integer guild_id;
+    private Integer patron;
 }
