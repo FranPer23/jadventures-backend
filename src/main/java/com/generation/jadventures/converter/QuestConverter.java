@@ -53,7 +53,7 @@ public class QuestConverter {
 
 }
 
-public QuestDtoBase QuestToDtoBase(QuestDtoBase e){
+public QuestDtoBase QuestToDtoBase(Quest e){
     return QuestDtoBase
     .builder()
     .date_created(e.getDate_created())
@@ -72,6 +72,7 @@ public QuestDtoBase QuestToDtoBase(QuestDtoBase e){
 public QuestDtoWWithGuild questToDtoWWithGuild(Quest e){
     return QuestDtoWWithGuild    
     .builder()
+    .id(e.getId())
     .date_created(e.getDate_created())
     .status(e.getStatus())
     .rank(e.getRank())
