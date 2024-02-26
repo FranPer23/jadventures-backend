@@ -39,7 +39,7 @@ public class QuestController {
     public ResponseEntity<?> questDetails(@PathVariable Integer id) {
     Optional<Quest> quest = questRepo.findById(id);
     if (quest.isPresent()) {
-        return ResponseEntity.ok(questConv.QuestToDtoBase(quest.get()));
+        return ResponseEntity.ok(questConv.questToDtoWWithGuild(quest.get()));
     } else {
         return ResponseEntity.notFound().build();
     }
