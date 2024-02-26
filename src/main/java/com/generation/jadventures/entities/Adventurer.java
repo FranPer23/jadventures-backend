@@ -37,6 +37,7 @@ public class Adventurer {
     @JoinColumn(name = "party_id")
     private Party joinedParty;
 
+    @JoinColumn(name = "party_leader_id")
     @OneToOne(fetch = FetchType.LAZY)
     private Party leadedParty;
     

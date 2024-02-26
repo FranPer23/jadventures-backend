@@ -32,11 +32,37 @@ public class Party {
     private String motto;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "party_leader_id")
     private Adventurer party_leader;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Adventurer> adventurers;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Quest> quests;
+
+ 
+
+
+
+    public boolean hasLeader() {
+        return this.party_leader != null;
+    }
+
+    public boolean hasMinimumAdventurers() {
+        return this.adventurers.size() >= 1 && this.adventurers.size() <= 3;
+    }
+
+    public void setPartyLeader(Adventurer leader) {
+
+        if (!hasLeader()) {
+            this.party_leader = leader;
+        }
+    }
+    
+    public void setAdventurers(List<Adventurer> adventurers){
+        if (hasMinimumAdventurers()) {
+            this.adventurers = adventurers;
+        } 
+    }
     
 }

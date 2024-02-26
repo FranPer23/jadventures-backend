@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.converter.QuestConverter;
-import com.generation.jadventures.dto.quest.QuestDtoBase;
+
 import com.generation.jadventures.dto.quest.QuestDtoRpost;
 import com.generation.jadventures.dto.quest.QuestDtoRput;
 import com.generation.jadventures.dto.quest.QuestDtoWWithGuild;

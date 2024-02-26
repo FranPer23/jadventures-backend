@@ -69,18 +69,7 @@ public class GuildConverter {
         .build();
     }
 
-    // public GuildDtoAuthentication authenticationGuild(Guild e){
-    //     return GuildDtoAuthentication
-    //     .builder()
-    //     .id(e.getId())
-    //     .name(e.getName())
-    //     .authentication_seal(e.getAuthentication_seal())
-    //     .seal_img_url(e.getSeal_img_url())
-    //     .n_employees(e.getN_employees())
-    //     .hq_address(e.getHq_address())
-    //     .postedQuests(e.getPostedQuests())
-    //     .build();
-    // }
+
 
 
 

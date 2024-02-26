@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.generation.jadventures.entities.Adventurer;
+import com.generation.jadventures.entities.Party;
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.repositories.AdventurerRepository;
+import com.generation.jadventures.repositories.PartyRepository;
 import com.generation.jadventures.repositories.QuestRepository;
 
 
@@ -17,6 +19,9 @@ class JadventuresApplicationTests {
 
 	@Autowired
     AdventurerRepository advRepo;
+
+	@Autowired
+    PartyRepository partyRepo;
 
 
 
@@ -31,6 +36,13 @@ class JadventuresApplicationTests {
 		.role("rshtbrht")
         .build();
         a = advRepo.save(a);
+
+		Party p = Party.builder()
+        .name("abc")
+        .authentication_seal("def")
+        .motto("ghi")
+        .build();
+		p = partyRepo.save(p);
 	}
 
 }
