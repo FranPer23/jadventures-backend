@@ -1,7 +1,9 @@
 package com.generation.jadventures.controllers;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,11 +36,14 @@ public class QuestController {
     }
 
     @GetMapping("/quests/{id}")
-    public QuestDtoBase questDetails(@PathVariable Integer id)
-    {
-        return questConv.QuestToDtoBase(questRepo.findById(id).get());
+    public ResponseEntity<?> questDetails(@PathVariable Integer id) {
+    Optional<Quest> quest = questRepo.findById(id);
+    if (quest.isPresent()) {
+        return ResponseEntity.ok(questConv.QuestToDtoBase(quest.get()));
+    } else {
+        return ResponseEntity.notFound().build();
     }
-
+}
     @PostMapping("/quests")
     public Quest insert(@RequestBody QuestDtoRpost dto) 
     {
