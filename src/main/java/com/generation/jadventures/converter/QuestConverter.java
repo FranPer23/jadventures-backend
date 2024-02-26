@@ -86,24 +86,23 @@ public QuestDtoWWithGuild questToDtoWWithGuild(Quest e){
 }
 
 public Quest questDtoPost(QuestDtoRpost dto){
-    Guild gilda = guildRepo.findById(dto.getGuild_id()).get();
     return Quest
-    .builder()
-    .date_created(dto.getDate_created())
-    .status(dto.getStatus())
-    .rank(dto.getRank())
-    .reward(dto.getReward())
-    .area(dto.getArea())
-    .date_completed(dto.getDate_completed())
-    .map_url(dto.getMap_url())
-    .description(dto.getDescription())
-    .type(dto.getType())
-    .patron(gilda)
-    .build();
+                .builder()
+                .date_created(dto.getDate_created())
+                .status(dto.getStatus())
+                .rank(dto.getRank())
+                .reward(dto.getReward())
+                .area(dto.getArea())
+                .date_completed(dto.getDate_completed())
+                .map_url(dto.getMap_url())
+                .description(dto.getDescription())
+                .type(dto.getType())
+                .patron(guildRepo.findById(dto.getPatron()).get())
+            .build();
 }
 
 public Quest questDtoPut(QuestDtoRput dto){
-    Guild gilda = guildRepo.findById(dto.getGuild_id()).get();
+    Guild gilda = guildRepo.findById(dto.getPatron()).get();
     return Quest
     .builder()
     .date_created(dto.getDate_created())

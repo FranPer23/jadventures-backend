@@ -1,18 +1,18 @@
-package com.generation.jadventures.dto.quest;
+package com.generation.jadventures.dto.guild;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-@EqualsAndHashCode(callSuper=false)
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class QuestDtoRput extends QuestDtoBase {
+public class GuildDtoWithImg 
+{
     private Integer id;
-    private Integer patron;
+    private String name;
+    private String seal_img_url;
+
 }

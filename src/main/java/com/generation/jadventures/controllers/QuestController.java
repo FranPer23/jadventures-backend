@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.converter.QuestConverter;
+import com.generation.jadventures.dto.quest.QuestDtoBase;
 import com.generation.jadventures.dto.quest.QuestDtoRpost;
 import com.generation.jadventures.dto.quest.QuestDtoRput;
 import com.generation.jadventures.dto.quest.QuestDtoWWithGuild;
@@ -32,11 +33,16 @@ public class QuestController {
         return questRepo.findAll().stream().map(q -> questConv.questToDtoWWithGuild(q)).toList();
     }
 
-    @PostMapping("/quests")
-    public QuestDtoWWithGuild insert(@RequestBody QuestDtoRpost dto) 
+    @GetMapping("/quests/{id}")
+    public QuestDtoBase questDetails(@PathVariable Integer id)
     {
-        Quest q = questConv.questDtoPost(dto);
-        return questConv.questToDtoWWithGuild(questRepo.save(q));
+        return questConv.QuestToDtoBase(questRepo.findById(id).get());
+    }
+
+    @PostMapping("/quests")
+    public Quest insert(@RequestBody QuestDtoRpost dto) 
+    {
+        return questRepo.save(questConv.questDtoPost(dto));
     }
    
     

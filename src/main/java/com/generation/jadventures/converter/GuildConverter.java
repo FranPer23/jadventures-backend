@@ -7,6 +7,7 @@ import com.generation.jadventures.dto.guild.GuildDtoAuthentication;
 import com.generation.jadventures.dto.guild.GuildDtoBase;
 import com.generation.jadventures.dto.guild.GuildDtoR;
 import com.generation.jadventures.dto.guild.GuildDtoWWithQuest;
+import com.generation.jadventures.dto.guild.GuildDtoWithImg;
 import com.generation.jadventures.entities.Guild;
 
 
@@ -59,18 +60,27 @@ public class GuildConverter {
         .build();
     }
 
-    public GuildDtoAuthentication authenticationGuild(Guild e){
-        return GuildDtoAuthentication
+    public GuildDtoWithImg GuildToDtoWWithImg(Guild e){
+        return GuildDtoWithImg
         .builder()
         .id(e.getId())
         .name(e.getName())
-        .authentication_seal(e.getAuthentication_seal())
         .seal_img_url(e.getSeal_img_url())
-        .n_employees(e.getN_employees())
-        .hq_address(e.getHq_address())
-        .postedQuests(e.getPostedQuests())
         .build();
     }
+
+    // public GuildDtoAuthentication authenticationGuild(Guild e){
+    //     return GuildDtoAuthentication
+    //     .builder()
+    //     .id(e.getId())
+    //     .name(e.getName())
+    //     .authentication_seal(e.getAuthentication_seal())
+    //     .seal_img_url(e.getSeal_img_url())
+    //     .n_employees(e.getN_employees())
+    //     .hq_address(e.getHq_address())
+    //     .postedQuests(e.getPostedQuests())
+    //     .build();
+    // }
 
 
 

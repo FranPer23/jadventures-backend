@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import com.generation.jadventures.converter.GuildConverter;
 import com.generation.jadventures.dto.guild.GuildDtoAuthentication;
 import com.generation.jadventures.dto.guild.GuildDtoBase;
 import com.generation.jadventures.dto.guild.GuildDtoWWithQuest;
+import com.generation.jadventures.dto.guild.GuildDtoWithImg;
 import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.repositories.GuildRepository;
 
@@ -36,19 +39,16 @@ public class GuildController {
                .map(e -> guildConv.GuildToDtoBase(e))
                .toList();
     }
-
     
-    // @PostMapping("/guild/login")
-    // public GuildDtoWWithQuest login(@RequestBody GuildDtoAuthentication dto ){
-    //     Optional<Guild> optGuild = guildRepo.login(dto.getName(), dto.getAuthentication_seal());
-    //     if (optGuild.isPresent()) {
-    //         GuildDtoWWithQuest guildDtoWWithQuest = // Logic to convert Guild to GuildDtoWWithQuest
-    //         return ResponseEntity.ok(guildDtoWWithQuest);
-    //     } else {
-    //         return ResponseEntity.notFound().build();
-    //     }
-    // }
-
+    @PostMapping("/guilds/login")
+    public ResponseEntity<?> login(@RequestBody GuildDtoAuthentication dto ){
+        Optional<Guild> optGuild = guildRepo.login(dto.getName(), dto.getAuthentication_seal());
+        if (optGuild.isPresent()) {
+            return new ResponseEntity<GuildDtoWithImg>(guildConv.GuildToDtoWWithImg(optGuild.get()),HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("Gilda non trovata!",HttpStatus.UNAUTHORIZED);
+        }
+    }
 
     @GetMapping("/guilds/{id}/quests")
     public GuildDtoWWithQuest getGuildDtoWWithQuest(@PathVariable Integer id) {
